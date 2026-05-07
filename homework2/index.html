@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>واجب العمليات الحسابية</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .result-box { font-weight: bold; color: #0d6efd; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
+            <h3 class="text-center mb-4">لوحة العمليات الحسابية</h3>
+            
+            <div class="row g-2 mb-4">
+                <div class="col-4">
+                    <input type="number" id="n1" class="form-control" placeholder="الرقم 1">
+                </div>
+                <div class="col-4">
+                    <input type="number" id="n2" class="form-control" placeholder="الرقم 2">
+                </div>
+                <div class="col-4">
+                    <input type="number" id="n3" class="form-control" placeholder="الرقم 3">
+                </div>
+            </div>
+
+            <div class="vstack gap-3">
+                <div class="d-flex align-items-center">
+                    <button onclick="calculate('add')" class="btn btn-primary w-25">ADD</button>
+                    <span class="ms-3">= الجمع: <span id="res-add" class="result-box">0</span></span>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <button onclick="calculate('mul')" class="btn btn-success w-25">Multiply</button>
+                    <span class="ms-3">= الضرب: <span id="res-mul" class="result-box">0</span></span>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <button onclick="calculate('max')" class="btn btn-warning w-25 text-white">MAX</button>
+                    <span class="ms-3">= الأكبر: <span id="res-max" class="result-box">0</span></span>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <button onclick="calculate('avg')" class="btn btn-info w-25 text-white">Average</button>
+                    <span class="ms-3">= المعدل: <span id="res-avg" class="result-box">0</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculate(type) {
+           
+            let a = parseFloat(document.getElementById('n1').value) || 0;
+            let b = parseFloat(document.getElementById('n2').value) || 0;
+            let c = parseFloat(document.getElementById('n3').value) || 0;
+
+            if (type === 'add') {
+                document.getElementById('res-add').innerText = a + b + c;
+            } else if (type === 'mul') {
+                document.getElementById('res-mul').innerText = a * b * c;
+            } else if (type === 'max') {
+                document.getElementById('res-max').innerText = Math.max(a, b, c);
+            } else if (type === 'avg') {
+                document.getElementById('res-avg').innerText = ((a + b + c) / 3).toFixed(2);
+            }
+        }
+    </script>
+
+</body>
+</html>
